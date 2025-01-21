@@ -1,0 +1,33 @@
+.flex-dir-row {
+    display: flex;
+    
+    flex-direction: row;
+}
+.flex-dir-column {
+    display: flex;
+    
+    flex-direction: column;
+}
+
+
+
+.flex-c-c {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.flex-s-c {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+.flex-c-s {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+}
+.flex-s-s {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+}
