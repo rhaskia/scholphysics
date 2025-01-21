@@ -1,9 +1,12 @@
 import './master.css'
+import Quiz from './Quiz'
 
 function App() {
+    const quiz_title = "Example Title";
+
   return (
     <>
-      Hello World!
+      <Quiz title={quiz_title}/>
     </>
   )
 }
