@@ -1,0 +1,77 @@
+/* CSS RESET DO NOT INCLUDE OTHER CSS CODE HERE*/
+/* 1. Use a more-intuitive box-sizing model */
+*, *::before, *::after {
+  /* What this does is that the size of an element now includes the borders and padding, BUT NOT MARGIN */
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin & padding */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  /* Hides the overflow on the horizontal axis of the browser */
+  overflow-x: hidden;
+
+  /* Smooths the scroll behaviour. Useful for if you want to <a href> to an element */
+  scroll-behavior: smooth;
+}
+
+body {
+  /* 3. Add accessible line-height */
+  line-height: 1.5;
+  /* 4. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+
+  background-color: white;
+
+  /* The entire body element will cover the entire viewport */
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
+/* 5. Improve media defaults */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 6. Inherit fonts for form controls */
+input, button, textarea, select {
+  font: inherit;
+}
+
+/* 7. Avoid text overflows */
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+/* 8. Improve line wrapping */
+p, h1, h2, h3, h4, h5, h6 {
+  text-wrap: pretty;
+}
+
+/* Disables the default blue colour and removes the underline for hyperlinks */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Removes the default padding and margins. The list-style-type is set to none so that there are no bullet points or discs */
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+/* No bullet points or discs for list items */
+li {
+  list-style: none;
+}
+
+/* 9. Create a root stacking context */
+#root, #__next {
+  isolation: isolate;
+}
