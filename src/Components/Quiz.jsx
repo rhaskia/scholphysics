@@ -1,6 +1,11 @@
 import { useState } from 'react';
 
-class Question {
+export class Question {
+    title;
+    question;
+    answers;
+    correctIdx;
+
     constructor(title, question, answers, correctIdx) {
         this.title = title;
         this.question = question;
@@ -9,8 +14,7 @@ class Question {
     }
 }
 
-const Quiz = (props) =>  {
-    // move to props
+export const Quiz = (props) =>  {
     const question = props.question;
     const [chosen, setChosen] = useState(null);
 
@@ -31,9 +35,9 @@ const Quiz = (props) =>  {
 
     return (
         <div className="quiz-component">
-            <h2> {props.title} </h2>
+            <h2> {question.title} </h2>
 
-            <p> Lorem Ipsum </p>
+            <p> {question.question} </p>
 
             <div className="quiz-buttons"> 
                 {question.answers.map(function(obj, i) { 
@@ -58,5 +62,3 @@ const Quiz = (props) =>  {
         </div>
     )
 }
-
-export default Quiz;
