@@ -1,8 +1,8 @@
 import './master.css'
-import {Quiz, Question} from './Quiz'
+import {Quiz, Question} from './Components/Quiz'
 
 function App() {
-    const question = new Question("Example", )
+  const question = new Question("Example");
 
   return (
     <>
