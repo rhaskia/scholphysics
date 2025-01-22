@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState } from 'react';
 
 class Question {
     constructor(title, question, answers, correctIdx) {
@@ -12,10 +12,11 @@ class Question {
 const Quiz = (props) =>  {
     // move to props
     const question = props.question;
-    const [chosen, setChosen] = useState(-1);
+    const [chosen, setChosen] = useState(null);
 
     function buttonClassName(i) {
-        if (chosen == -1) { return ""; }
+        // null is falsy
+        if (!chosen) { return ""; }
 
         if (i == chosen) {
             if (chosen == question.correctIdx) {
@@ -29,23 +30,27 @@ const Quiz = (props) =>  {
     };
 
     return (
-        <div className="quizcomponent">
+        <div className="quiz-component">
             <h2> {props.title} </h2>
+
             <p> Lorem Ipsum </p>
-            <div className="quizbuttons"> 
+
+            <div className="quiz-buttons"> 
                 {question.answers.map(function(obj, i) { 
                     return (
                         <button key={i} 
-                            onClick={function() { setChosen(i) } } 
-                            className={buttonClassName(i)}>
+                            onClick={() => {  setChosen(i) } } 
+                            className={() => { buttonClassName(i) }}>
                             {obj} 
                         </button>
                     );
                 })}
             </div>
+
             <p>
                 {chosen}
             </p>
+
             <details hidden={chosen == -1}>
               <summary>Explanation</summary>
               <p>Lorem ipsum</p>
