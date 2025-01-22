@@ -18,19 +18,17 @@ export const Quiz = (props) =>  {
     const question = props.question;
     const [chosen, setChosen] = useState(null);
 
-    function buttonClassName(i) {
+    function buttonClassName(buttonIdx) {
         // null is falsy
-        if (!chosen) { return ""; }
+        if (chosen === null) { return ""; }
 
-        if (i == chosen) {
+        if (buttonIdx == chosen) {
             if (chosen == question.correctIdx) {
                 return "correct";
             } else {
                 return "incorrect";
             }
         }
-
-        return "";
     };
 
     return (
@@ -40,12 +38,14 @@ export const Quiz = (props) =>  {
             <p> {question.question} </p>
 
             <div className="quiz-buttons"> 
-                {question.answers.map(function(obj, i) { 
+                {question.answers.map((questionText, buttonIdx) => { 
                     return (
-                        <button key={i} 
-                            onClick={() => {  setChosen(i) } } 
-                            className={() => { buttonClassName(i) }}>
-                            {obj} 
+                        <button 
+                            key={buttonIdx} 
+                            onClick={() => {  setChosen(buttonIdx) } } 
+                            className={buttonClassName(buttonIdx)}>
+
+                            {questionText} 
                         </button>
                     );
                 })}
@@ -55,7 +55,7 @@ export const Quiz = (props) =>  {
                 {chosen}
             </p>
 
-            <details hidden={chosen == -1}>
+            <details hidden={chosen === null}>
               <summary>Explanation</summary>
               <p>Lorem ipsum</p>
             </details>
