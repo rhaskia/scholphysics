@@ -6,26 +6,38 @@ export function loadTemplate(path) {
 }
 
 export function generateQuestion(template) {
-  let values = template.valueRanges.map(r => randRange(r[0], r[1]));
-  console.log();
-  let question = template.question;
-  // TODO: generate answers
-  let answers = ["1", "2", "3", "4"];
-  let correctIdx = 2;
+    let values = template.valueRanges.map(r => randRange(r[0], r[1]));
+    let question = format(template.question, values);
+    let answers = [];
+    let correctIdx = 2;
+    let answersAmount = 4;
 
-  for (let i = 0; i < values.length; i++) {
-      question = question.replace("{" + i + "}", expo(values[i], 3));
-  } 
+    console.log(question);
+    if (template.questionType == "number") {
+        const eq = format(template.answer, values);
+        console.log(eq);
+        let answer = eval(eq);
+        const randomIndex = Math.floor(Math.random() * answersAmount);
+        correctIdx = randomIndex;
 
-  return new Question(template.title, question, answers, correctIdx);
+        for (let i = 0; i < answersAmount; i++) {
+            answers[i] = i == randomIndex ? answer : expo(randRange(0, 10), 3); 
+        }
+    } else {
+        answers = template.answers;
+        correctIdx = template.correctIdx;
+    }
+
+    return new Question(template.title, question, answers, correctIdx);
 }
 
 export function generateQuestionSet(topic, amount) {
     let questions = [];
-    let template = data.questions[0];
+    let templates = data.questions;
 
     for (let i = 0; i < amount; i++) {
-        questions.push(generateQuestion(template));
+        const randomIndex = Math.floor(Math.random() * templates.length);
+        questions.push(generateQuestion(templates[randomIndex]));
     }
 
     return questions;
@@ -37,4 +49,14 @@ function randRange(min, max) {
 
 function expo(x, f) {
   return Number.parseFloat(x).toExponential(f);
+}
+
+function format(template, values) {
+  let result = template;
+
+  for (let i = 0; i < values.length; i++) {
+          result = result.replace("{" + i + "}", values[i]);
+  } 
+
+    return result;
 }
