@@ -1,8 +1,8 @@
 import './master.css'
-import Quiz from './Quiz'
+import {Quiz, Question} from './Quiz'
 
 function App() {
-    const quiz_title = "Example Title";
+    const question = new Question("Example", )
 
   return (
     <>
