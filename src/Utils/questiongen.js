@@ -20,6 +20,17 @@ export function generateQuestion(template) {
     return new Question(template.title, question, answers, correctIdx);
 }
 
+export function generateQuestionSet(topic, amount) {
+    let questions = [];
+    let template = data.questions[0];
+
+    for (let i = 0; i < amount; i++) {
+        questions.push(generateQuestion(template));
+    }
+
+    return questions;
+}
+
 function randRange(min, max) {
   return Math.random() * (max - min) + min;
 }

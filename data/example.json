@@ -1,5 +1,9 @@
 {
-    "title": "Example Question",
-    "question": "A wave has velocity {0}m and frequency {1}, what is its wavelength?",
-    "valueRanges": [[0.001, 0.01], [0.001, 0.01]]
+    "questions": [
+        {
+            "title": "Example Question",
+            "question": "A wave has velocity {0}m and frequency {1}, what is its wavelength?",
+            "valueRanges": [[0.001, 0.01], [0.001, 0.01]]
+        }
+    ]
 }

@@ -1,5 +1,5 @@
 import { describe, test, it, expect } from "vitest";
-import { loadTemplate, generateQuestion } from "../src/Utils/questiongen.js";
+import { loadTemplate, generateQuestionSet } from "../src/Utils/questiongen.js";
 
 describe('load_question', () => {
     it('should return question title', () => {
@@ -7,6 +7,6 @@ describe('load_question', () => {
 
         let file = loadTemplate(path);
 
-        console.log(generateQuestion(file));
+        console.log(generateQuestionSet("waves", 5));
     })
 });
