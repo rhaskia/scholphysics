@@ -1,7 +1,7 @@
 {
     "questions": [
         {
-            "title": "Wave Length",
+            "title": "Mediums",
             "question": "A wave travels through a medium. Which of the following is true about the wave if its amplitude is increased?",
             "questionType": "choice", 
             "answers": ["The wave speed increases.",
@@ -9,14 +9,16 @@
                 "The energy carried by the wave increases.",
                 "The wavelength of the wave decreases."],
             "correctIdx": 2,
-            "valueRanges": []
+            "valueRanges": [],
+            "explanation": "You are wrong!!!"
         },
         {
-            "title": "Example Question",
+            "title": "Wavelength",
             "question": "A wave has velocity {0}m and frequency {1}, what is its wavelength?",
             "questionType": "number", 
             "valueRanges": [[0.001, 0.01], [0.001, 0.01]],
-            "answer": "{0} / {1}"
+            "answer": "{0} / {1}",
+            "explanation": "You are wrong!!!"
         }
     ]
 }

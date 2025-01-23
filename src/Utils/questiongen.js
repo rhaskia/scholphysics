@@ -28,7 +28,8 @@ export function generateQuestion(template) {
         correctIdx = template.correctIdx;
     }
 
-    return new Question(template.title, question, answers, correctIdx);
+    console.log(template.title);
+    return new Question(template.title, question, answers, correctIdx, template.explanation);
 }
 
 export function generateQuestionSet(topic, amount) {

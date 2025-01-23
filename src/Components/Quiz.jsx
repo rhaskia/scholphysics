@@ -5,12 +5,14 @@ export class Question {
     question;
     answers;
     correctIdx;
+    explanation;
 
-    constructor(title, question, answers, correctIdx) {
+    constructor(title, question, answers, correctIdx, explanation) {
         this.title = title;
         this.question = question;
         this.answers = answers;
         this.correctIdx = correctIdx;
+        this.explanation = explanation;
     }
 }
 
@@ -57,7 +59,7 @@ export const Quiz = (props) =>  {
 
             <details hidden={chosen === null}>
               <summary>Explanation</summary>
-              <p>Lorem ipsum</p>
+              <p>{question.explanation}</p>
             </details>
         </div>
     )
