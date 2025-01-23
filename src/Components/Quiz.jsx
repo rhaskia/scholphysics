@@ -33,7 +33,7 @@ export const Quiz = (props) =>  {
 
     return (
         <div className="questions-container flex-c-c">
-            <div className="quiz-component">
+            <div className="quiz-card flex-dir-column">
                 <h2 className="rubik-semibold"> {question.title} </h2>
 
                 <p className="lato"> {question.question} </p>
