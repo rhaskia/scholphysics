@@ -1,5 +1,5 @@
 /* Master CSS file */
 /* Please import other CSS files */
-@import url("./CSS/flex.css");
-@import url("./CSS/commonColors.css");
+@import url("./CSS/Reusables/flex.css");
+@import url("./CSS/Reusables/commonColors.css");
 @import url("./CSS/quiz.css");
