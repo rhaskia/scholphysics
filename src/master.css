@@ -1,5 +1,9 @@
 /* Master CSS file */
 /* Please import other CSS files */
+
+/* CSS files with styles that can be used repetitively */
 @import url("./CSS/Reusables/flex.css");
 @import url("./CSS/Reusables/commonColors.css");
+@import url("./CSS/Reusables/fonts.css");
+
 @import url("./CSS/quiz.css");

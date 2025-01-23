@@ -1,0 +1,12 @@
+@font-face {
+    font-family: Rubik-SemiBold;
+    src: url("/src/Fonts/Rubik-SemiBold.ttf");
+}
+
+.rubik-semibold {
+    font-family: Rubik-SemiBold;
+}
+
+.lato {
+    font-family: Lato, sans-serif;
+}

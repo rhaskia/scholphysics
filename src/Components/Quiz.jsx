@@ -34,9 +34,9 @@ export const Quiz = (props) =>  {
     return (
         <div className="questions-container flex-c-c">
             <div className="quiz-component">
-                <h2> {question.title} </h2>
+                <h2 className="rubik-semibold"> {question.title} </h2>
 
-                <p> {question.question} </p>
+                <p className="lato"> {question.question} </p>
 
                 <div className="quiz-buttons"> 
                     {question.answers.map((questionText, buttonIdx) => { 
@@ -44,7 +44,7 @@ export const Quiz = (props) =>  {
                             <button 
                                 key={buttonIdx} 
                                 onClick={() => {  setChosen(buttonIdx) } } 
-                                className={buttonClassName(buttonIdx)}>
+                                className={`${buttonClassName(buttonIdx)} lato`}>
 
                                 {questionText} 
                             </button>
