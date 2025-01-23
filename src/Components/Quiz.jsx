@@ -34,33 +34,35 @@ export const Quiz = (props) =>  {
     };
 
     return (
-        <div className="quiz-component">
-            <h2> {question.title} </h2>
+        <div className="questions-container flex-c-c">
+            <div className="quiz-card flex-dir-column">
+                <h2 className="rubik-semibold"> {question.title} </h2>
 
-            <p> {question.question} </p>
+                <p className="lato"> {question.question} </p>
 
-            <div className="quiz-buttons"> 
-                {question.answers.map((questionText, buttonIdx) => { 
-                    return (
-                        <button 
-                            key={buttonIdx} 
-                            onClick={() => {  setChosen(buttonIdx) } } 
-                            className={buttonClassName(buttonIdx)}>
+                <div className="quiz-buttons"> 
+                    {question.answers.map((questionText, buttonIdx) => { 
+                        return (
+                            <button 
+                                key={buttonIdx} 
+                                onClick={() => {  setChosen(buttonIdx) } } 
+                                className={`${buttonClassName(buttonIdx)} lato`}>
 
-                            {questionText} 
-                        </button>
-                    );
-                })}
+                                {questionText} 
+                            </button>
+                        );
+                    })}
+                </div>
+
+                <p>
+                    {chosen}
+                </p>
+
+                <details hidden={chosen === null}>
+                    <summary>Explanation</summary>
+                    <p>{question.explanation}</p>
+                </details>
             </div>
-
-            <p>
-                {chosen}
-            </p>
-
-            <details hidden={chosen === null}>
-              <summary>Explanation</summary>
-              <p>{question.explanation}</p>
-            </details>
         </div>
     )
 }

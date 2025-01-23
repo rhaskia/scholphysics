@@ -1,39 +1,37 @@
-/* restucture this later */
-.quiz-component {
-  width: 500px;
+.questions-container {
+  width: 100vw;
+  height: 100vh;
+}
 
-  margin: 20px;
-  padding: 10px;
+.quiz-card {
+  width: 40vw;
+
+  padding: calc(1vw + 0.5vh);
 
   box-shadow: 0px 4px 0px 0px lightgray;
   border: 2px solid lightgray;
   border-radius: 8px;
+
+  gap: 1vh;
 }
 
 .quiz-buttons {
   width: 100%;
 
-  margin: 10px 0;
+  margin-top: 1.2vh;
+  margin-bottom: 1.2vh;
 
   display: flex;
   flex-wrap: wrap;
 
-  gap: 10px;
+  gap: 0.5vw;
 
   --color: lightgrey;
 }
 
-.correct {
-  background: #e8ffe8;
-  --color: #28b528;
-}
+.quiz-buttons button {
+  width: calc(50% - 5px);
 
-.incorrect {
-  background: #ffe8e8;
-  --color: #b5382b;
-}
-
-button {
   padding: 0 10px;
 
   box-shadow: 0px 2px 0px 0px var(--color);
@@ -43,13 +41,19 @@ button {
   background: white;
 }
 
-.quiz-buttons button {
-  width: calc(50% - 5px);
-}
-
-button:active {
+.quiz-buttons button:active {
   box-shadow: 0 0 0 0 lightgray;
   transform: translateY(2px);
+}
+
+.correct {
+  background: #e8ffe8 !important;
+  --color: #28b528;
+}
+
+.incorrect {
+  background: #ffe8e8 !important;
+  --color: #b5382b;
 }
 
 details p {
@@ -57,4 +61,15 @@ details p {
   padding-left: 10px;
 
   border-left: 3px solid lightgrey;
+}
+
+@media screen and (max-width: 540px) {
+  .quiz-card {
+    width: 50vw;
+  }
+
+  /* Makes the second the second row of buttons have a margin*/
+  .quiz-buttons button:not(:first-child and :nth-child(2)) {
+    margin-top: 0.5vw;
+  }
 }
