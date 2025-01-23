@@ -19,6 +19,14 @@
             "valueRanges": [[0.001, 0.01], [0.001, 0.01]],
             "answer": "{0} / {1}",
             "explanation": "You are wrong!!!"
+        },
+        {
+            "title": "Energy Models",
+            "question": "The photoelectric effect and the Bohr model both involve the quantisation of energy.\nName one difference between the two in the use of this concept",
+            "questionType": "input", 
+            "valueRanges": [],
+            "answer": "The photoelectric effect deals with the quantisation of energy of light/photons, where Bohr deals with electrons.",
+            "explanation": "You are wrong!!!"
         }
     ]
 }

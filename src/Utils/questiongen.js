@@ -9,13 +9,11 @@ export function generateQuestion(template) {
     let values = template.valueRanges.map(r => randRange(r[0], r[1]));
     let question = format(template.question, values);
     let answers = [];
-    let correctIdx = 2;
+    let correctIdx = 0;
     let answersAmount = 4;
 
-    console.log(question);
     if (template.questionType == "number") {
         const eq = format(template.answer, values);
-        console.log(eq);
         let answer = eval(eq);
         const randomIndex = Math.floor(Math.random() * answersAmount);
         correctIdx = randomIndex;
@@ -23,13 +21,14 @@ export function generateQuestion(template) {
         for (let i = 0; i < answersAmount; i++) {
             answers[i] = i == randomIndex ? answer : expo(randRange(0, 10), 3); 
         }
+    } else if (template.questionType == "input") {
+        answers = [template.answer];
     } else {
         answers = template.answers;
         correctIdx = template.correctIdx;
     }
 
-    console.log(template.title);
-    return new Question(template.title, question, answers, correctIdx, template.explanation);
+    return new Question(template.title, question, answers, correctIdx, template.explanation, template.questionType);
 }
 
 export function generateQuestionSet(topic, amount) {
@@ -43,6 +42,8 @@ export function generateQuestionSet(topic, amount) {
 
     return questions;
 }
+
+export default generateQuestionSet;
 
 function randRange(min, max) {
   return Math.random() * (max - min) + min;

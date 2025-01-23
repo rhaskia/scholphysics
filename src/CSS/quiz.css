@@ -4,6 +4,8 @@
 }
 
 .quiz-card {
+  position: absolute;
+
   width: 40vw;
 
   padding: calc(1vw + 0.5vh);
@@ -29,7 +31,8 @@
   --color: lightgrey;
 }
 
-.quiz-buttons button {
+/* maybe button specific class? */
+.quiz-buttons button, .text-answer-rate button {
   width: calc(50% - 5px);
 
   padding: 0 10px;
@@ -41,7 +44,7 @@
   background: white;
 }
 
-.quiz-buttons button:active {
+.quiz-buttons button:active, .text-answer-rate button:active {
   box-shadow: 0 0 0 0 lightgray;
   transform: translateY(2px);
 }
@@ -54,6 +57,10 @@
 .incorrect {
   background: #ffe8e8 !important;
   --color: #b5382b;
+}
+
+.text-answer-rate {
+    --color: lightgrey;
 }
 
 details p {
@@ -72,4 +79,22 @@ details p {
   .quiz-buttons button:not(:first-child and :nth-child(2)) {
     margin-top: 0.5vw;
   }
+}
+
+/* Question set progress bar */
+.quiz-progress {
+  width: calc(100% + 2px);
+  height: 8px;
+  margin: 0;
+  position: absolute;
+  top: -1px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  left: -1px;
+}
+
+.quiz-progress::-webkit-slider-thumb,
+.quiz-progress::-moz-range-thumb,
+.quiz-progress::-ms-thumb {
+    opacity:0;
 }
