@@ -32,33 +32,35 @@ export const Quiz = (props) =>  {
     };
 
     return (
-        <div className="quiz-component">
-            <h2> {question.title} </h2>
+        <div className="questions-container flex-c-c">
+            <div className="quiz-component">
+                <h2> {question.title} </h2>
 
-            <p> {question.question} </p>
+                <p> {question.question} </p>
 
-            <div className="quiz-buttons"> 
-                {question.answers.map((questionText, buttonIdx) => { 
-                    return (
-                        <button 
-                            key={buttonIdx} 
-                            onClick={() => {  setChosen(buttonIdx) } } 
-                            className={buttonClassName(buttonIdx)}>
+                <div className="quiz-buttons"> 
+                    {question.answers.map((questionText, buttonIdx) => { 
+                        return (
+                            <button 
+                                key={buttonIdx} 
+                                onClick={() => {  setChosen(buttonIdx) } } 
+                                className={buttonClassName(buttonIdx)}>
 
-                            {questionText} 
-                        </button>
-                    );
-                })}
+                                {questionText} 
+                            </button>
+                        );
+                    })}
+                </div>
+
+                <p>
+                    {chosen}
+                </p>
+
+                <details hidden={chosen === null}>
+                <summary>Explanation</summary>
+                <p>Lorem ipsum</p>
+                </details>
             </div>
-
-            <p>
-                {chosen}
-            </p>
-
-            <details hidden={chosen === null}>
-              <summary>Explanation</summary>
-              <p>Lorem ipsum</p>
-            </details>
         </div>
     )
 }

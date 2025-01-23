@@ -1,4 +1,8 @@
-/* restucture this later */
+.questions-container {
+  width: 100vw;
+  height: 100vh;
+}
+
 .quiz-component {
   width: 500px;
 
