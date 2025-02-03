@@ -1,0 +1,10 @@
+.home-content {
+    padding: 1.5vw;
+
+    width: 100vw;
+    height: 100vh;
+}
+
+.home-content h1 {
+    font-size: 3vw;
+}
