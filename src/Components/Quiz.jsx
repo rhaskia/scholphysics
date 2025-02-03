@@ -19,10 +19,11 @@ export class Question {
     }
 }
 
-export const Quiz = (props) =>  {
+export const Quiz = (props) => {
     const questions = generateQuestionSet("waves", 8);
     const [questionIdx, setQuestionIdx] = useState(0);
     const [question, setQuestion] = useState(questions[0]);
+    const [textAnswer, setTextAnswer] = useState(null);
 
     // Update question whenever idx changes
     useEffect(() => {
@@ -35,18 +36,19 @@ export const Quiz = (props) =>  {
         setChosen(null);
         console.log(questionIdx);
         setQuestionIdx(questionIdx + 1);
+        setTextAnswer(null);
     };
 
     return (
         <div className="questions-container flex-c-c">
             <div className="quiz-card flex-dir-column">
-                <input className="quiz-progress" value={questionIdx} max={questions.length} type="range"/>
-                
+                <input className="quiz-progress" value={questionIdx} max={questions.length} readOnly type="range" />
+
                 <h2 className="rubik-semibold"> {question.title} </h2>
 
                 <p className="lato"> {question.question} </p>
-                
-                <QuizInput chosen={chosen} setChosen={setChosen} question={question} />
+
+                <QuizInput chosen={chosen} setChosen={setChosen} question={question} textAnswer={textAnswer} setTextAnswer={setTextAnswer} />
 
                 <button className="next-button" hidden={chosen === null} onClick={nextQuestion}>Next Question</button>
 
@@ -62,7 +64,7 @@ export const Quiz = (props) =>  {
 const QuizInput = (props) => {
     let question = props.question;
     let chosen = props.chosen;
-    const [textAnswer, setTextAnswer] = useState(null);
+    let textAnswer = props.textAnswer;
 
     function buttonClassName(buttonIdx) {
         // null is falsy
@@ -74,36 +76,36 @@ const QuizInput = (props) => {
 
         return "";
     };
-    
+
     if (question.type == "input") {
         return (
             <div className='quiz-input'>
-            <form hidden={textAnswer != null} onSubmit={(e) => { let d = new FormData(e.target); setTextAnswer(d.entries().next().value[1]); e.preventDefault(); }}>
-                    <input name="answer"/>
+                <form hidden={textAnswer != null} onSubmit={(e) => { let d = new FormData(e.target); props.setTextAnswer(d.entries().next().value[1]); e.preventDefault(); }}>
+                    <input name="answer" />
                 </form>
 
                 <div className="text-answer-rate" hidden={textAnswer == null}>
-                    Your answer: {textAnswer} 
+                    Your answer: {textAnswer}
                     <br></br>
                     Answer: {question.answers[0]}
                     <br></br>
-                    <button> Correct </button>
-                    <button> Incorrect </button>
+                    <button onClick={(e) => { props.setChosen(0); }} disabled={chosen != null} className={chosen === 0 ? "correct" : ""}> Correct </button>
+                    <button onClick={(e) => { props.setChosen(-1); }} disabled={chosen != null} className={chosen === -1 ? "incorrect" : ""}> Incorrect </button>
                 </div>
             </div>
         );
     } else {
         return (
-            <div className="quiz-buttons"> 
-                {question.answers.map((questionText, buttonIdx) => { 
+            <div className="quiz-buttons">
+                {question.answers.map((questionText, buttonIdx) => {
                     return (
-                        <button 
-                            key={buttonIdx} 
+                        <button
+                            key={buttonIdx}
                             disabled={chosen != null}
-                            onClick={() => { props.setChosen(buttonIdx) } } 
+                            onClick={() => { props.setChosen(buttonIdx) }}
                             className={`${buttonClassName(buttonIdx)} lato`}>
 
-                            {questionText} 
+                            {questionText}
                         </button>
                     );
                 })}
