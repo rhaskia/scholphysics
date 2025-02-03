@@ -8,3 +8,15 @@
 .home-content h1 {
     font-size: 3vw;
 }
+
+.quizzes-container {
+    width: 100vw;
+}
+
+.quizzes-container li {
+    width: 10vw;
+    height: 10vh;
+
+    border: 2px solid lightgray;
+    border-radius: 8px
+}
